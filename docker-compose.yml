@@ -1,0 +1,42 @@
+version: "3.4"
+
+services:
+    database_sallvecomerce:
+        image: postgres
+        container_name: database_sallvecomerce
+        restart: always
+        ports:
+            - 5432:5432
+        environment:
+            - POSTGRES_USER=docker
+            - POSTGRES_PASSWORD=docker
+            - POSTGRES_DB=sallve
+        volumes:
+            - pgdata:/data/postgres
+    cache_sallvecommerce:
+        image: redis:5
+        command: ["redis-server", "--bind", "redis", "--port", "6379"]
+        container_name: cache_sallvecommerce
+        ports:
+            - 6379:6379
+    api_sallvecommerce:
+        build: .
+        container_name: api_sallvecomerce
+        ports:
+            - 5000:5000
+        volumes:
+            - .:/user/app
+        links:
+            - database_sallvecomerce
+            - cache_sallvecommerce
+        depends_on:
+            - database_sallvecomerce
+            - cache_sallvecommerce
+
+volumes:
+    pgdata:
+        driver: local
+
+networks:
+    app-network:
+        driver: bridge
