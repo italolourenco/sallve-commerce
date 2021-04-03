@@ -22,7 +22,10 @@ export class DbManagerTypeOrm implements IDbManager {
       logging: true,
       migrationsRun: true,
       migrations: ["./src/infrastructure/orm/migrations/*.ts"],
-      ssl: { rejectUnauthorized: true },
+      ssl: true,
+      extra: {
+        ssl: { rejectUnauthorized: false },
+      },
     };
 
     console.log(connectionOptions);
