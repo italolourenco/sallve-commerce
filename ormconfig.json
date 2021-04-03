@@ -1,0 +1,14 @@
+{
+    "type" : "postgres",
+    "host" : "localhost",
+    "port" : 5432,
+    "username" : "docker",
+    "password" : "docker",
+    "database" : "sallve",
+    "migrationsRun" : true,
+    "migrations" : ["./src/infrastructure/orm/migrations/*.ts"],
+    "cli" : {
+        "migrationsDir" : "src/infrastructure/orm/migrations"
+    }
+
+}
