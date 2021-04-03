@@ -13,7 +13,7 @@ export class DbManagerTypeOrm implements IDbManager {
   public async createConnection(): Promise<Connection> {
     const connectionOptions: PostgresConnectionOptions = {
       type: "postgres",
-      host: "database_sallvecomerce",
+      host: config.database.host,
       // eslint-disable-next-line radix
       port: Number.parseInt(config.database.port),
       username: config.database.username,
@@ -23,6 +23,8 @@ export class DbManagerTypeOrm implements IDbManager {
       migrationsRun: true,
       migrations: ["./src/infrastructure/orm/migrations/*.ts"],
     };
+
+    console.log(connectionOptions);
 
     const connection = await createConnection(connectionOptions);
     console.log(connection.migrations);
