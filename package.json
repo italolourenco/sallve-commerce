@@ -8,7 +8,8 @@
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn src/main.ts",
     "typeorm": "ts-node ./node_modules/.bin/typeorm",
     "db:migrate": "npx ts-node ./node_modules/.bin/typeorm migration:run",
-    "test": "jest"
+    "test": "jest",
+    "start" : "node dist/src/main.js"
   },
   "keywords": [],
   "author": "Italo Lourenço",
