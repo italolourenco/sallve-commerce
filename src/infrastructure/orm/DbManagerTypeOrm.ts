@@ -2,8 +2,8 @@ import * as dotenv from "dotenv";
 import { createConnection, Connection } from "typeorm";
 import { PostgresConnectionOptions } from "typeorm/driver/postgres/PostgresConnectionOptions";
 
-import { IDbManager } from "../../interfaces/db/IDbManager";
 import config from "../config/environment";
+import { IDbManager } from "../db/IDbManager";
 
 const envFound = dotenv.config();
 if (!envFound) {
@@ -11,6 +11,8 @@ if (!envFound) {
 }
 export class DbManagerTypeOrm implements IDbManager {
   public async createConnection(): Promise<Connection> {
+    const ssl = config.database.ssl === "true";
+    const sslJsonConfig = JSON.parse(config.database.sslConfig);
     const connectionOptions: PostgresConnectionOptions = {
       type: "postgres",
       host: config.database.host,
@@ -22,16 +24,12 @@ export class DbManagerTypeOrm implements IDbManager {
       logging: true,
       migrationsRun: true,
       migrations: ["./src/infrastructure/orm/migrations/*.ts"],
-      ssl: true,
-      extra: {
-        ssl: { rejectUnauthorized: false },
-      },
+      entities: ["./src/infrastructure/orm/entity/*.ts"],
+      ssl,
+      extra: sslJsonConfig,
     };
 
-    console.log(connectionOptions);
-
     const connection = await createConnection(connectionOptions);
-    console.log(connection.migrations);
 
     return connection;
   }

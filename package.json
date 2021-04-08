@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build" : "tsc",
+    "build": "tsc",
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn src/main.ts",
     "typeorm": "ts-node ./node_modules/.bin/typeorm",
     "db:migrate": "npx ts-node ./node_modules/.bin/typeorm migration:run",
     "test": "jest",
-    "start" : "ts-node-dev --transpile-only --ignore-watch node_modules --respawn src/main.ts"
+    "start": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn src/main.ts",
+    "check-coverage": "jest --collect-coverage"
   },
   "keywords": [],
   "author": "Italo Lourenço",
@@ -17,6 +18,9 @@
   "devDependencies": {
     "@types/express": "^4.17.11",
     "@types/jest": "^26.0.22",
+    "@types/redis": "^2.8.28",
+    "@types/swagger-jsdoc": "3.0.2",
+    "@types/swagger-ui-express": "4.1.2",
     "@typescript-eslint/eslint-plugin": "^4.20.0",
     "@typescript-eslint/parser": "^4.20.0",
     "eslint": "^7.23.0",
@@ -27,17 +31,23 @@
     "eslint-plugin-import-helpers": "^1.1.0",
     "eslint-plugin-prettier": "^3.3.1",
     "jest": "^26.6.3",
+    "mock-redis-client": "^0.91.13",
     "prettier": "^2.2.1",
     "ts-jest": "^26.5.4",
     "ts-node-dev": "^1.1.6",
     "typescript": "^4.2.3"
   },
   "dependencies": {
+    "@types/body-parser": "^1.19.0",
     "@types/dotenv": "^8.2.0",
+    "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "pg": "^8.5.1",
+    "redis": "^3.1.0",
     "reflect-metadata": "^0.1.13",
+    "swagger-jsdoc": "4.0.0",
+    "swagger-ui-express": "4.1.4",
     "typeorm": "^0.2.32"
   }
 }

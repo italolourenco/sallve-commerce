@@ -11,5 +11,11 @@ export default {
     username: process.env.DATABASE_USER,
     password: process.env.DATABASE_PASSWORD,
     database: process.env.DATABASE_NAME,
+    ssl: process.env.DATABASE_SSL,
+    sslConfig: process.env.DATABASE_SLL_CONFIG,
+  },
+  cache: {
+    host: process.env.CACHE_HOST,
+    port: process.env.CACHE_PORT,
   },
 };
