@@ -1,11 +1,8 @@
-import * as typeorm from "typeorm";
-
-import { IDbManager } from "../../interfaces/db/IDbManager";
 import { DbManagerTypeOrm } from "../orm/DbManagerTypeOrm";
+import { IDbManager } from "./IDbManager";
 
 export class DbManagerFactory {
   private static instance: DbManagerFactory;
-  private orm = typeorm;
 
   static getInstance(): DbManagerFactory {
     if (!DbManagerFactory.instance) {
