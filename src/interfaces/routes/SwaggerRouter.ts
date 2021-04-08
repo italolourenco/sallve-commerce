@@ -14,7 +14,7 @@ const options = {
       },
     },
   },
-  apis: ["./dist/src/interfaces/routes/CartRouter"],
+  apis: ["../**/*.ts"],
 };
 
 export class SwaggerRouter {
