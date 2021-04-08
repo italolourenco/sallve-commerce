@@ -38,7 +38,7 @@ export class AddSkuInCart {
         checkNewInventoryValueIsValid
       );
 
-      return { statusCode: 201, message: "Sku Added Successfully" };
+      return { statusCode: 200, message: "Sku Added Successfully" };
     } catch (error) {
       return { statusCode: 404, message: error.message };
     }

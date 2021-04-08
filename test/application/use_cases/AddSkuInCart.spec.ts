@@ -116,7 +116,7 @@ describe("Test Add Sku in Cart Use Case", () => {
         payloadInvalidCart.quantity
       );
 
-      expect(response.statusCode).toEqual(201);
+      expect(response.statusCode).toEqual(200);
       expect(response.message).toEqual("Sku Added Successfully");
 
       done();
@@ -170,7 +170,7 @@ describe("Test Add Sku in Cart Use Case", () => {
         payloadValidCart.quantity
       );
 
-      expect(response.statusCode).toEqual(201);
+      expect(response.statusCode).toEqual(200);
       expect(response.message).toEqual("Sku Added Successfully");
 
       done();
