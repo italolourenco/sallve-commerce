@@ -28,15 +28,13 @@ export class CartRepository implements ICartRepository {
     return new Cart(cartData.id, cartData.skus);
   }
 
-  async addSku(cartId, skuId, quantity): Promise<boolean> {
-    const a = await this.repository
+  async addSku(cartId, skuId, quantity) {
+    await this.repository
       .createQueryBuilder()
       .insert()
       .into(TypeOrmCartSkus)
       .values({ cart_id: cartId, sku_id: skuId, quantity })
       .execute();
-
-    return true;
   }
 
   async getQuantitySkuInCart(cartId, skuId) {
