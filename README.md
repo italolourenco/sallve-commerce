@@ -19,3 +19,6 @@ git clone https://github.com/italolourenco/sallve-commerce.git
 ## Test
 1. Run `npm test` to check unit tests
 2. Run `npm run check-coverage`to check covarege files
+
+## Production
+1. Check docs : https://app-sallve.herokuapp.com/docs
