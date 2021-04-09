@@ -23,6 +23,10 @@ const fakeProductRepository = {
   getProductBySku: () => {
     //
   },
+
+  listAllProducrs: () => {
+    //
+  },
 } as IProductRepository;
 
 const cartId = 1;
