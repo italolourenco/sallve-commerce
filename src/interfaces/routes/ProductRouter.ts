@@ -24,11 +24,6 @@ export class ProductRouter {
    *    get:
    *      summary: List all products
    *      tags: [Product]
-   *      parameters:
-   *      - name: cartId
-   *        in: "path"
-   *        required: true
-   *        type: "string"
    *      responses:
    *        200:
    *          description: List all products data
