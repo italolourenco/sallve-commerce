@@ -5,7 +5,7 @@ import { SkuResponse } from "./SkuResponse";
  * @swagger
  *  components:
  *    schemas:
- *      Product:
+ *      CartProduct:
  *        type: object
  *        properties:
  *          id:
@@ -14,7 +14,7 @@ import { SkuResponse } from "./SkuResponse";
  *          skus:
  *            type: array
  *            description: Products skus in cart
- *            $ref: '#/components/schemas/Sku'
+ *            $ref: '#/components/schemas/CartSku'
  *
  */
 

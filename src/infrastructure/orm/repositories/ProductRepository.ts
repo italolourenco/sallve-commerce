@@ -18,4 +18,9 @@ export class ProductRepository implements IProductRepository {
 
     return product;
   }
+
+  async listAllProducrs() {
+    const products = await this.repository.find({ relations: ["skus"] });
+    return products;
+  }
 }

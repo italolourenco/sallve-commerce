@@ -2,7 +2,7 @@
  * @swagger
  *  components:
  *    schemas:
- *      Sku:
+ *      CartSku:
  *        type: object
  *        properties:
  *          id:

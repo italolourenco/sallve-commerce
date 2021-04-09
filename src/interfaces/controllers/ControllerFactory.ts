@@ -2,6 +2,7 @@
 import { AddSkuInCart } from "../../application/use_cases/AddSkuInCart";
 import { DeleteProductUseCase } from "../../application/use_cases/DeleteProductCart";
 import { GetCartUseCase } from "../../application/use_cases/GetCartUseCase";
+import { ListProductsUseCase } from "../../application/use_cases/ListProducts";
 import { UpdateSkuInCart } from "../../application/use_cases/UpdateSkuInCart";
 import { CacheManagerFactory } from "../../infrastructure/cache/CacheManagerFactory";
 import { CartRepository } from "../../infrastructure/orm/repositories/CartRepository";
@@ -11,6 +12,7 @@ import AddProductCart from "./AddProductCart";
 import DeleteSkuController from "./DeleteSkuController";
 import GetCartController from "./GetCartController";
 import { IController } from "./IController";
+import ListAllProductsController from "./ListAllProductsController";
 import UpdateSkuInCartController from "./UpdateSkuInCartController";
 
 export enum ControllerType {
@@ -18,6 +20,7 @@ export enum ControllerType {
   ADD_PRODUCT,
   UPDATE_PRODUCT,
   DELETE_PRODUCT,
+  LIST_PRODUCTS,
 }
 
 export class ControllerFactory {
@@ -43,6 +46,11 @@ export class ControllerFactory {
       case ControllerType.DELETE_PRODUCT:
         return new DeleteSkuController(
           new DeleteProductUseCase(new CartRepository(), new SkuRepository()),
+          cacheManager
+        );
+      case ControllerType.LIST_PRODUCTS:
+        return new ListAllProductsController(
+          new ListProductsUseCase(new ProductRepository()),
           cacheManager
         );
       default:
