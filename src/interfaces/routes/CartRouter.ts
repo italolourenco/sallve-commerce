@@ -41,10 +41,10 @@ export class CartRouter {
    *              schema:
    *                $ref: '#/components/schemas/Cart'
    *              example:
-   *                - id: 1
-   *                - totalCart: 0.0
-   *                - totalSkus: 0
-   *                - products : []
+   *                id: 1
+   *                totalCart: 0.0
+   *                totalSkus: 0
+   *                products : []
    */
   public async getCart(request: Request, response: Response) {
     const controllerFactory = new ControllerFactory();

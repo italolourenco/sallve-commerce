@@ -32,10 +32,10 @@ export class ProductRouter {
    *              schema:
    *                $ref: '#/components/schemas/Product'
    *              example:
-   *                - id: 1
-   *                - name: "hidratante labial"
-   *                - image: http://cdn.shopify.com/s/files/1/0074/3486/2639/products/sallve-hidratante-labial-1.jpg?v=1605541986"
-   *                - skus : [{"sku": 1,"inventory": 2,"price": 20.50}]
+   *                id: 1
+   *                name: "hidratante labial"
+   *                image: http://cdn.shopify.com/s/files/1/0074/3486/2639/products/sallve-hidratante-labial-1.jpg?v=1605541986"
+   *                skus : [{"sku": 1,"inventory": 2,"price": 20.50}]
    */
   public async getAllProducts(request: Request, response: Response) {
     const controllerFactory = new ControllerFactory();
