@@ -24,7 +24,7 @@ export class CartRouter {
   /**
    *  @swagger
    *  path:
-   *   /{cartId}:
+   *   /cart/{cartId}:
    *    get:
    *      summary: Get cart
    *      tags: [Cart]
@@ -63,7 +63,7 @@ export class CartRouter {
   /**
    *  @swagger
    *  path:
-   *   /{cartId}/product:
+   *   /cart/{cartId}/product:
    *    post:
    *      summary: Add an sku in cart
    *      tags: [Cart]
@@ -110,7 +110,7 @@ export class CartRouter {
   /**
    *  @swagger
    *  path:
-   *   /{cartId}/product:
+   *   /cart/{cartId}/product:
    *    put:
    *      summary: Update an sku in cart
    *      tags: [Cart]
@@ -158,7 +158,7 @@ export class CartRouter {
   /**
    *  @swagger
    *  path:
-   *   /{cartId}/product/{sku}:
+   *   /cart/{cartId}/product/{sku}:
    *    delete:
    *      summary: Delete an sku in cart
    *      tags: [Cart]
