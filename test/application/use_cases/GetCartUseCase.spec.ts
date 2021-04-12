@@ -1,6 +1,7 @@
 import { GetCartUseCase } from "../../../src/application/use_cases/GetCartUseCase";
 import { ICartRepository } from "../../../src/domain/ICartRepository";
 import { IProductRepository } from "../../../src/domain/IProductRepository";
+import { CartResponse } from "../../../src/domain/models/CartResponse";
 
 const fakeCartRepository = {
   get: (cartId) => {
@@ -72,10 +73,7 @@ describe("Test GetCartUseCase", () => {
       );
 
       const response = await getCartUseCase.execute(cartId);
-      expect(response.id).toEqual(cartId);
-      expect(response.products).toEqual([]);
-      expect(response.totalCart).toEqual(0.0);
-      expect(response.totalSkus).toEqual(0);
+      expect(response).toBeInstanceOf(CartResponse);
 
       done();
     });
@@ -99,9 +97,7 @@ describe("Test GetCartUseCase", () => {
       );
 
       const response = await getCartUseCase.execute(cartId);
-      expect(response.id).toEqual(cartId);
-      expect(response.totalCart).toEqual(15.5);
-      expect(response.totalSkus).toEqual(2);
+      expect(response).toBeInstanceOf(CartResponse);
       done();
     });
   });
