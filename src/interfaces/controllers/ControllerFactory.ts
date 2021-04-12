@@ -1,5 +1,6 @@
 /* eslint-disable no-case-declarations */
 import { AddSkuInCart } from "../../application/use_cases/AddSkuInCart";
+import { CreateCartUseCase } from "../../application/use_cases/CreateCartUseCase";
 import { DeleteProductUseCase } from "../../application/use_cases/DeleteProductCart";
 import { GetCartUseCase } from "../../application/use_cases/GetCartUseCase";
 import { ListProductsUseCase } from "../../application/use_cases/ListProducts";
@@ -9,6 +10,7 @@ import { CartRepository } from "../../infrastructure/orm/repositories/CartReposi
 import { ProductRepository } from "../../infrastructure/orm/repositories/ProductRepository";
 import { SkuRepository } from "../../infrastructure/orm/repositories/SkuRepository";
 import AddProductCart from "./AddProductCart";
+import CreateCartController from "./CreateCartController";
 import DeleteSkuController from "./DeleteSkuController";
 import GetCartController from "./GetCartController";
 import { IController } from "./IController";
@@ -21,6 +23,7 @@ export enum ControllerType {
   UPDATE_PRODUCT,
   DELETE_PRODUCT,
   LIST_PRODUCTS,
+  CREATE_CART,
 }
 
 export class ControllerFactory {
@@ -52,6 +55,10 @@ export class ControllerFactory {
         return new ListAllProductsController(
           new ListProductsUseCase(new ProductRepository()),
           cacheManager
+        );
+      case ControllerType.CREATE_CART:
+        return new CreateCartController(
+          new CreateCartUseCase(new CartRepository())
         );
       default:
         return null;

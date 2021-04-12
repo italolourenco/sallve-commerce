@@ -12,16 +12,13 @@ export class GetCartUseCase {
   ) {}
 
   async execute(cartId) {
-    let cart;
     try {
-      cart = await this.cartRepository.get(cartId);
+      const cart = await this.cartRepository.get(cartId);
+      return this.parseCartToCartResponse(cart);
     } catch (error) {
-      console.log("Cart Not Found ! ");
-      console.log("Create new cart with ID", cartId);
-      cart = await this.cartRepository.create(cartId);
+      console.log(error);
+      return { statusCode: 404, message: error.message };
     }
-
-    return this.parseCartToCartResponse(cart);
   }
 
   private async parseCartToCartResponse(cart: Cart): Promise<CartResponse> {

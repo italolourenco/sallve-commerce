@@ -12,8 +12,9 @@ export class CartRepository implements ICartRepository {
     this.repository = getRepository(TypeOrmCart);
   }
 
-  async create(cartId: number) {
-    const cart = await this.repository.save({ id: cartId });
+  async create() {
+    const newCartToSave = await this.repository.create();
+    const cart = await this.repository.save(newCartToSave);
     return new Cart(cart.id);
   }
 

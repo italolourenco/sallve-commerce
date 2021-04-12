@@ -105,23 +105,4 @@ describe("Test GetCartUseCase", () => {
       done();
     });
   });
-
-  describe("Test get a new cart", () => {
-    beforeEach(() => {
-      spyOn(fakeCartRepository, "get").and.throwError("teste");
-      spyOn(fakeCartRepository, "create").and.returnValue(newCartResponse);
-    });
-    it("should get cart skus", async (done) => {
-      const getCartUseCase = new GetCartUseCase(
-        fakeCartRepository,
-        fakeProductRepository
-      );
-
-      const response = await getCartUseCase.execute(newCartId);
-      expect(response.id).toEqual(newCartId);
-      expect(response.totalCart).toEqual(0.0);
-      expect(response.totalSkus).toEqual(0);
-      done();
-    });
-  });
 });

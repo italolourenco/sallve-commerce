@@ -1,7 +1,7 @@
 import { Cart } from "./models/Cart";
 
 export interface ICartRepository {
-  create(cartId: number): Promise<Cart>;
+  create(): Promise<Cart>;
   get(cartId: number): Promise<Cart>;
   addSku(cart, sku, quantity);
   getQuantitySkuInCart(cartId: number, skuId: number): Promise<number>;

@@ -14,11 +14,46 @@ export class CartRouter {
   }
 
   private configRouter(): void {
-    this.router.get("/", this.redirectToDocs);
+    this.router.get("/", this.createCart);
     this.router.get("/:cartId", this.getCart);
     this.router.post("/:cartId/product", this.addProduct);
     this.router.put("/:cartId/product", this.updateProduct);
     this.router.delete("/:cartId/product/:sku", this.deleteProduct);
+  }
+
+  /**
+   *  @swagger
+   *  path:
+   *   /cart:
+   *    get:
+   *      summary: Create an empty cart
+   *      tags: [Cart]
+   *      parameters:
+   *      - name: cartId
+   *        in: "path"
+   *        required: true
+   *        type: "string"
+   *      responses:
+   *        200:
+   *          description: Return an empty cart
+   *          content:
+   *            application/json:
+   *              schema:
+   *                $ref: '#/components/schemas/Cart'
+   *              example:
+   *                id: 1
+   *                totalCart: 0.0
+   *                totalSkus: 0
+   *                products : []
+   */
+  public async createCart(request: Request, response: Response) {
+    const controllerFactory = new ControllerFactory();
+    const controllerGetCar = controllerFactory.createController(
+      ControllerType.CREATE_CART
+    );
+
+    const cart = await controllerGetCar.handle(request);
+    return response.status(200).send(cart);
   }
 
   /**

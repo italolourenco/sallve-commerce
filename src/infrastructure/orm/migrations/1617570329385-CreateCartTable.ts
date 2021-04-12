@@ -10,6 +10,8 @@ export class CreateCartTable1617570329385 implements MigrationInterface {
             name: "id",
             type: "integer",
             isPrimary: true,
+            isGenerated: true,
+            generationStrategy: "increment",
           },
         ],
       })
