@@ -28,11 +28,6 @@ export class CartRouter {
    *    get:
    *      summary: Create an empty cart
    *      tags: [Cart]
-   *      parameters:
-   *      - name: cartId
-   *        in: "path"
-   *        required: true
-   *        type: "string"
    *      responses:
    *        200:
    *          description: Return an empty cart
