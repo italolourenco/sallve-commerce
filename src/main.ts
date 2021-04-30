@@ -5,6 +5,7 @@ const start = async () => {
   try {
     await bootstrap.execute();
     WebServer.start();
+    console.log("🚀 started");
   } catch (err) {
     console.log(err);
     process.exit(1);
