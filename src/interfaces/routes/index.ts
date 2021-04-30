@@ -7,7 +7,7 @@ import { SwaggerRouter } from "./SwaggerRouter";
 
 const routes = Router();
 
-// routes.all("*", cors());
+routes.all("*", cors());
 
 routes.use("/cart", new CartRouter().router);
 routes.use("/docs", new SwaggerRouter().router);
